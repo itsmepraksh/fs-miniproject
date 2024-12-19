@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="bg-zinc-800 h-screen w-screen px-8 py-12 text-white">
+        <h1 class="text-2xl py-4">Create Files</h1>
+        <form action="/" method="post" class="flex flex-col w-60 gap-4">
+            <input type="text" name="fileName" placeholder="filename" class="p-2 outline-none bg-zinc-700 rounded-xl" />
+            <textarea name="fileData" class="p-2 outline-none bg-zinc-700 rounded-xl resize-none"
+                placeholder="filedetail"></textarea>
+            <button class="p-2 outline-none bg-blue-500 rounded-xl">create</button>
+        </form>
+
+        
+        <div class="bg-zinc-900 p-4 mt-8 h-[60%] gap-2">
+                <h1 class="m-4 text-3xl">Files</h1>
+            <% if(files.length>0){ %> <% files.map((e)=>{ %>
+                <div class="flex flex-wrap gap-5">
+                    <div class="bg-zinc-800 p-4 rounded-xl h-fit w-fit ">
+                        <h1 class="text-xl">
+                            <%= e%>
+                        </h1>
+
+                        <div class="flex gap-4">
+                        <a href="/files/<%=e%>" class="text-xs text-blue-500">read more</a>
+                        <a href="/edit/<%=e%>" class="text-xs text-yellow-500">edit</a>
+                        <a href="/delete/<%=e%>"  class="text-xs text-red-500">delete</a>
+                        </div>
+                    </div>
+                    <% }) %>
+                        <% }else{ %>
+                            <div class="bg-zinc-800 p-4 rounded-xl">
+                                <p class="text-sm">no files yet.</p>
+                            </div>
+                            <% } %></div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
